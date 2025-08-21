@@ -1,0 +1,59 @@
+[
+  {
+    "image": "frame_001.jpg",
+    "hotspots": [
+      {
+        "x": 59,
+        "y": 699,
+        "w": 146,
+        "h": 54,
+        "label": "New Hotspot"
+      }
+    ],
+    "inputs": [
+      {
+        "x": 75,
+        "y": 531,
+        "w": 278,
+        "h": 48,
+        "label": "Username",
+        "expected": "karan.pillai_demo"
+      }
+    ]
+  },
+  {
+    "image": "frame_002.jpg",
+    "hotspots": [
+      {
+        "x": 428,
+        "y": 492,
+        "w": 89,
+        "h": 54,
+        "label": "New Hotspot"
+      }
+    ],
+    "inputs": [
+      {
+        "x": 78,
+        "y": 424,
+        "w": 249,
+        "h": 42,
+        "label": "OTP",
+        "expected": "308602"
+      }
+    ]
+  },
+  {
+    "image": "frame_003.jpg",
+    "hotspots": [
+      {
+        "x": 0,
+        "y": 164,
+        "w": 58,
+        "h": 54,
+        "label": "New Hotspot"
+      }
+    ],
+    "inputs": []
+  }
+]
