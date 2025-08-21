@@ -150,57 +150,35 @@ export const TestPlayer: React.FC<TestPlayerProps> = ({ frames, onExitTest }) =>
 
       <footer className="w-full max-w-7xl mt-4 flex flex-col items-center space-y-4">
         {showResults && (
-            <div role="status" aria-live="assertive" className="p-4 bg-gray-800 border border-purple-500 rounded-lg text-gray-200 w-full text-center shadow-lg">
-                <h3 className="text-xl font-bold text-purple-400">Test Complete!</h3>
-                <p className="text-lg mt-1">Your score: {score} / {totalPossible}</p>
-                {mistakeFramesCount > 0 && (
-                  <p className="text-sm text-red-400">Mistake clicks detected on {mistakeFramesCount} frame{mistakeFramesCount === 1 ? '' : 's'}.</p>
-                )}
-                <p className="text-sm mt-2 text-gray-400">You can now review your answers using the navigation buttons below.</p>
-            </div>
+            <>
+                <div role="status" aria-live="assertive" className="p-4 bg-gray-800 border border-purple-500 rounded-lg text-gray-200 w-full text-center shadow-lg">
+                    <h3 className="text-xl font-bold text-purple-400">Test Complete!</h3>
+                    <p className="text-lg mt-1">Your score: {score} / {totalPossible}</p>
+                    {mistakeFramesCount > 0 && (
+                      <p className="text-sm text-red-400">Mistake clicks detected on {mistakeFramesCount} frame{mistakeFramesCount === 1 ? '' : 's'}.</p>
+                    )}
+                    <p className="text-sm mt-2 text-gray-400">You can now review your answers using the navigation buttons below.</p>
+                </div>
+                <div className="flex justify-between items-center w-full p-3 bg-gray-800 rounded-lg shadow-lg">
+                    <button
+                        onClick={() => navigate('prev')}
+                        disabled={currentFrameIdx === 0}
+                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gray-600 rounded-md hover:bg-gray-500 disabled:bg-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors"
+                        aria-label="Previous Frame"
+                    >
+                        <ChevronLeftIcon /> Previous
+                    </button>
+                    <button
+                        onClick={() => navigate('next')}
+                        disabled={isLastFrame}
+                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 disabled:bg-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors"
+                        aria-label="Next Frame for Review"
+                    >
+                        Next (Review) <ChevronRightIcon />
+                    </button>
+                </div>
+            </>
         )}
-
-        <div className="flex justify-between items-center w-full p-3 bg-gray-800 rounded-lg shadow-lg">
-            <button
-                onClick={() => navigate('prev')}
-                disabled={currentFrameIdx === 0}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gray-600 rounded-md hover:bg-gray-500 disabled:bg-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors"
-                aria-label="Previous Frame"
-            >
-                <ChevronLeftIcon /> Previous
-            </button>
-
-            {!isLastFrame && !showResults && (
-                 <button
-                    onClick={() => navigate('next')}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 transition-colors"
-                    aria-label="Next Frame"
-                >
-                    Next Frame <ChevronRightIcon/>
-                </button>
-            )}
-            
-            {isLastFrame && !showResults && (
-                <button
-                    onClick={() => navigate('next')} 
-                    className="px-5 py-2.5 text-base font-medium text-white bg-green-600 rounded-md hover:bg-green-700 transition-colors"
-                    aria-label="Finish Test and View Results"
-                >
-                    Finish Test & View Results
-                </button>
-            )}
-            
-            {showResults && (
-                <button
-                    onClick={() => navigate('next')}
-                    disabled={isLastFrame}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 disabled:bg-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors"
-                    aria-label="Next Frame for Review"
-                >
-                    Next (Review) <ChevronRightIcon />
-                </button>
-            )}
-        </div>
       </footer>
     </div>
   );
